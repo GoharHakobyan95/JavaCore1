@@ -4,82 +4,83 @@ public class ArrayUtil {
     public static void main(String[] args) {
         //print numbers
         int[] numbers = {15, 125, 2, -890, 0, 41, 857, -56, 10, 424};
-
-//        for (int i = 0; i < numbers.length; i++) {
-//            System.out.print(numbers[i] + (",  "));
-//        }
-
+        System.out.print("Numbers = ");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i] + (",  "));
+        }
+        System.out.println();
 
         //print max from numbers
-//        int max = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            if (numbers[i] > max) {
-//                max = numbers[i];
-//            }
-//        }
-//        System.out.println("max number = " + max);
+        int maxValue = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] > maxValue) {
+                maxValue = numbers[i];
+            }
+        }
+        System.out.println("Max value = " + maxValue);
 
 
         //print min from numbers
-//        int min = numbers.length;
-//        for (int i = 0; i < numbers.length; i++) {
-//            if (numbers[i] < min) {
-//                min = numbers[i];
-//            }
-//        }
-//        System.out.println("min number = " + min);
+        int minValue = numbers.length;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] < minValue) {
+                minValue = numbers[i];
+            }
+        }
+        System.out.println("Min value = " + minValue);
 
 
         //print even numbers
-//        int even = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            if ((numbers[i] % 2) == 0) {
-//                even = numbers[i];
-//                System.out.println("even number = " + even);
-//            }
-//        }
-
+        int evenNums = 0;
+        System.out.print("Even numbers = ");
+        for (int i = 0; i < numbers.length; i++) {
+            if ((numbers[i] % 2) == 0) {
+                evenNums = numbers[i];
+                System.out.print(evenNums + ", ");
+            }
+        }
+        System.out.println();
 
         //print odd numbers
-//        int odd = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            if ((numbers[i] % 2) == 1) {
-//                odd = numbers[i];
-//                System.out.println("odd number = " + odd);
-//            }
-//        }
-
+        int oddNums = 0;
+        System.out.print("Odd numbers = ");
+        for (int i = 0; i < numbers.length; i++) {
+            if ((numbers[i] % 2) == 1) {
+                oddNums = numbers[i];
+                System.out.print(oddNums + ", ");
+            }
+        }
+        System.out.println();
 
         // count of evens & odds;
-//        int countEven = 0;
-//        int countOdd = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            if ((numbers[i] % 2) == 0) {
-//                countEven++;
-//            } else {
-//                countOdd++;
-//            }
-//        }
-//        System.out.println("Even number = " + countEven);
-//        System.out.println("Odd number = " + countOdd);
+        int countOfEvenNums = 0;
+        int countOfOddNums = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if ((numbers[i] % 2) == 0) {
+                countOfEvenNums++;
+            } else {
+                countOfOddNums++;
+            }
+        }
+        System.out.println("Count of even nums = " + countOfEvenNums);
+        System.out.println("Count of odd nums = " + countOfOddNums);
 
 
-        //avarage of nums
-//        int result = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            result = result + numbers[i];
-//        }
-//        System.out.println("avarage of nums = " + result / numbers.length);
+        //avarage of array nums
+        int result = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            result = result + numbers[i];
+        }
+        System.out.println("Avarage of nums = " + result / numbers.length);
 
 
-//        //count of array
-//        int result = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            result = result + numbers[i];
-//
-//        }
-//        System.out.print("count = " + result);
+//        //count of array nums
+        int count = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            count = count + numbers[i];
 
+        }
+        System.out.print("Count of array nums = " + result);
 
     }
 }
