@@ -6,7 +6,7 @@ public class ArrayUtil {
         int[] numbers = {15, 125, 2, -890, 0, 41, 857, -56, 10, 424};
 
 //        for (int i = 0; i < numbers.length; i++) {
-//            System.out.print(numbers[i] + (", "));
+//            System.out.print(numbers[i] + (",  "));
 //        }
 
 
