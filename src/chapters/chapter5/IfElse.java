@@ -2,7 +2,7 @@ package chapters.chapter5;
 
 public class IfElse {
     public static void main(String[] args) {
-        int month = 4;
+        int month = 7;
         String season;
         if (month == 12 || month == 1 || month == 2)
             season = "winter";
