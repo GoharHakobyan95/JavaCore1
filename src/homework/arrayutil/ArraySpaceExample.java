@@ -25,8 +25,8 @@ public class ArraySpaceExample {
 
         char[] resultChar = new char[endIndex - startIndex + 1];
         int j = 0;
-        for (int k = startIndex; k <= endIndex; k++) {
-            resultChar[j++] = spaceArray[k];
+        for (int i = startIndex; i <= endIndex; i++) {
+            resultChar[j++] = spaceArray[i];
         }
 
         for (char c : resultChar) {
