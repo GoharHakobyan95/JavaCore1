@@ -1,81 +1,80 @@
 package homework.arrayutil;
 
 public class ArrayUtil {
-    public static void main(String[] args) {
-        //print numbers
-        int[] numbers = {15, 125, 2, -892, 0, 41, 857, -56, 919, 424};
-        System.out.print("Numbers = ");
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + (", "));
-        }
-        System.out.println();
-
-        //print max from numbers
-        int maxValue = 0;
+    public int max(int[] numbers) {
+        int max = 0;
         for (int i = 1; i < numbers.length; i++) {
-            if (numbers[i] > maxValue) {
-                maxValue = numbers[i];
+            if (numbers[i] > max) {
+                max = numbers[i];
             }
         }
-        System.out.println("Max value = " + maxValue);
+        return max;
+    }
 
 
-        //print min from numbers
-        int minValue = numbers.length;
+    public int min(int[] numbers) {
+        int min = numbers.length;
         for (int i = 1; i < numbers.length; i++) {
-            if (numbers[i] < minValue) {
-                minValue = numbers[i];
+            if (numbers[i] < min) {
+                min = numbers[i];
             }
         }
-        System.out.println("Min value = " + minValue);
+        return min;
+    }
 
 
-        //print even numbers
-        System.out.print("Even numbers = ");
+    public int getOddNums(int[] numbers) {
+        int result = 0;
         for (int i = 0; i < numbers.length; i++) {
-            if ((numbers[i] % 2) == 0) {
-                System.out.print(numbers[i] + ", ");
-            }
+            if ((numbers[i] % 2) == 1) ;
+            result++;
         }
-        System.out.println();
-
-        //print odd numbers
-        System.out.print("Odd numbers = ");
+        int[] oddNums = new int[result];
+        int j = 0;
         for (int i = 0; i < numbers.length; i++) {
-            if ((numbers[i] % 2) != 0) {
-                System.out.print(numbers[i] + ", ");
+
+            if (numbers[i] % 2 == 1) {
+                oddNums[j] = numbers[i];
+                j++;
             }
         }
-        System.out.println();
+        return j;
+    }
 
-        // count of evens & odds;
-        int countOfEvenNums = 0;
-        int countOfOddNums = 0;
+
+    public int getEvenNums(int[] numbers) {
+        int result = 0;
         for (int i = 0; i < numbers.length; i++) {
-            if ((numbers[i] % 2) == 0) {
-                countOfEvenNums++;
-            } else {
-                countOfOddNums++;
+            if ((numbers[i] % 2) == 0) ;
+            result++;
+        }
+        int[] evenNums = new int[result];
+        int j = 0;
+        for (int i = 0; i < numbers.length; i++) {
+
+            if (numbers[i] % 2 == 0) {
+                evenNums[j] = numbers[i];
+                j++;
             }
         }
-        System.out.println("Count of even nums = " + countOfEvenNums);
-        System.out.println("Count of odd nums = " + countOfOddNums);
+        return j;
+    }
 
-
-        //        //count of array nums
+    public double sumOfNums(int[] numbers) {
         double sum = 0;
         for (int i = 0; i < numbers.length; i++) {
             sum += numbers[i];
         }
-        System.out.print("Count of array nums = " + sum);
-        System.out.println();
-        //avarage of array nums
-        double avg = sum / numbers.length;
-        System.out.println("Avarage of nums = " + avg);
+        return sum;
+    }
+
+    public double avgOfNums(int[] numbers) {
+        double sum = 0;
+        double avg = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+            avg = sum / numbers.length;
+        }
+        return avg;
     }
 }
-
-
-
-
-
