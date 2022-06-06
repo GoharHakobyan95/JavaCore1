@@ -5,6 +5,15 @@ public class ArrayUtilDemo {
         ArrayUtil au = new ArrayUtil();
         int[] numbers = {15, 125, 2, -892, 0, 41, 857, -56, 919, 424};
 
+        System.out.print("numbers = ");
+        au.print(numbers);
+        System.out.println();
+        System.out.print("resultAscending = ");
+        au.sortFromMin(numbers);
+        System.out.println();
+        System.out.print("resultDescending = ");
+        au.sortFromMax(numbers);
+        System.out.println();
         System.out.println("max = " + au.max(numbers));
         System.out.println("min = " + au.min(numbers));
         System.out.print("count of odd nums = " + au.getOddNums(numbers));

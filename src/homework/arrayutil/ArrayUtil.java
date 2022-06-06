@@ -1,6 +1,41 @@
 package homework.arrayutil;
 
 public class ArrayUtil {
+    void print(int[] numbers) {
+        for (int i : numbers) {
+            System.out.print(i + ", ");
+        }
+    }
+
+
+    void sortFromMin(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                int resultAscending = 0;
+                if (numbers[i] > numbers[j]) {
+                    resultAscending = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = resultAscending;
+                }
+            }
+            System.out.print(numbers[i] + ", ");
+        }
+    }
+
+    void sortFromMax(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                int resultDescending = 0;
+                if (numbers[i] < numbers[j]) {
+                    resultDescending = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = resultDescending;
+                }
+            }
+            System.out.print(numbers[i] + ", ");
+        }
+    }
+
     public int max(int[] numbers) {
         int max = 0;
         for (int i = 1; i < numbers.length; i++) {
