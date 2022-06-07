@@ -2,13 +2,13 @@ package homework.braceChecker;
 
 public class BraceChecker {
     private String text;
+    Stack stack = new Stack();
 
     public BraceChecker(String text) {
         this.text = text;
     }
 
     public void check() {
-        Stack stack = new Stack();
 
         for (int i = 0; i < text.length(); i++) {
             char a = text.charAt(i);
@@ -21,20 +21,20 @@ public class BraceChecker {
                     check = stack.pop();
                     if (stack.pop() != '(') {
                         System.out.println("error: opened  " + check + " but closed " + a + " " + " at index " + (i));
-                        break;
                     }
+                    break;
                 case '}':
                     check = stack.pop();
                     if (stack.pop() != '{') {
                         System.out.println("error: opened  " + check + " but closed " + a + " at index " + (i));
-                        break;
                     }
+                    break;
                 case ']':
                     check = stack.pop();
                     if (stack.pop() != '[') {
                         System.out.println("error: opened  " + check + " but closed " + a + " at index " + (i));
-                        break;
                     }
+                    break;
             }
         }
 
