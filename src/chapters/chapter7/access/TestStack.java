@@ -1,4 +1,6 @@
-package chapters.chapter6;
+package chapters.chapter7.access;
+
+import chapters.chapter6.Stack;
 
 public class TestStack {
     public static void main(String[] args) {
@@ -20,6 +22,7 @@ public class TestStack {
         System.out.println("Stack in myStack2: ");
         for (int i = 10; i < 20; i++) {
             System.out.println(myStack2.pop());
+
         }
     }
 }

@@ -1,15 +1,16 @@
-package chapters.chapter6;
+package chapters.chapter7.access;
 
 public class Stack {
-    int stck[] = new int[10];
-    int tos;
+    private int stck[];
+    private int tos;
 
-    public Stack(int i) {
+    public Stack(int size) {
+        stck = new int[size];
         tos = -1;
     }
 
     public void push(int item) {
-        if (tos == 9) {
+        if (tos == stck.length-1) {
             System.out.println("Stack is full.");
         } else {
             stck[++tos] = item;
@@ -18,7 +19,7 @@ public class Stack {
 
     public int pop() {
         if (tos < 0) {
-            System.out.println("Stack underflow.");
+            System.out.print("Stack underflow.");
             return 0;
         } else {
             return stck[tos--];

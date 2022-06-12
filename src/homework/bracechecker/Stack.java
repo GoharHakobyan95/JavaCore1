@@ -1,7 +1,7 @@
-package homework.braceChecker;
+package homework.bracechecker;
 
 public class Stack {
-    char[] stack = new char[]{10};
+    private int[] stack = new int[10];
     private int size;
 
     public Stack() {
@@ -9,15 +9,16 @@ public class Stack {
     }
 
 
-    void push(char x) {
-        if (size == stack.length) {
+    public void push(int x) {
+        if (size == stack.length - 1) {
         } else {
             stack[++size] = x;
         }
     }
 
-    public char pop() {
+    public int pop() {
         if (size < 0) {
+
             return 0;
         } else {
             return stack[size--];
@@ -25,8 +26,8 @@ public class Stack {
     }
 
     public boolean isEmpty() {
-
-        return false;
+        return size == -1;
     }
+
 }
 
