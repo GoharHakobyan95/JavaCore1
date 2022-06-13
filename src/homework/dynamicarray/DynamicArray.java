@@ -33,16 +33,10 @@ public class DynamicArray {
 
     public int getByIndex(int index) {
         int value = 0;
-        for (int j = 0; j < size; j++) {
-            value += array[index];
-            return value;
-        }
-        return 0;
+        return (index > 0 && index <= size) ? value += array[index] : 0;
     }
 
-
     public int getFirstIndexByValue(int value) {
-        int j = 0;
         for (int i = 0; i < size; i++) {
             if (value == array[i]) {
                 return i;
