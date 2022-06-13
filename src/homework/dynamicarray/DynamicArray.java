@@ -1,8 +1,8 @@
 package homework.dynamicarray;
 
 public class DynamicArray {
-    public int[] array = new int[10];
-    public int size = 0;
+    private int[] array = new int[10];
+    private int size = 0;
 
     public void add(int value) {
         if (size == array.length) {
@@ -48,24 +48,37 @@ public class DynamicArray {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
 
     public void set(int index, int value) {
         int temp = 0;
-        for (int j = 0; j < size; j++) {
+        for (int i = 0; i < size; i++) {
             temp += array[index];
             array[index] = value;
-            System.out.print(array[j] + " ");
         }
-        System.out.println();
+    }
+
+
+    public void add(int index, int value) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] == array[index]) {
+                for (int j = size; j >= index; j--) {
+                    array[j + 1] = array[j];
+                }
+                if (array[i] == array[index]) {
+                    array[index] = value;
+                }
+                size++;
+            }
+        }
     }
 
 
     public void delete(int index) {
         int value = 0;
-        for (int j = 0; j < array.length; j++) {
+        for (int j = 0; j < size; j++) {
             value = array[index];
         }
         for (int i = 0; i < size; i++) {
@@ -73,30 +86,26 @@ public class DynamicArray {
                 for (int j = i; j < size; j++) {
                     array[j] = array[j + 1];
                 }
+                size--;
             }
-            System.out.print(array[i] + " ");
-        }
-        System.out.println();
-    }
 
-
-    public void add(int index, int value) {
-        int temp = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == array[index]) {
-                for (int j = size; j > 0; j--) {
-                    temp = array[j];
-                    array[j + 1] = array[j];
-                }
-                if (array[i] == array[index]) {
-                    array[index] = value;
-                }
-            }
-            System.out.print(array[i] + " ");
         }
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

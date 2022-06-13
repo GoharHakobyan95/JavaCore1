@@ -24,12 +24,17 @@ public class DynamicArrayDemo {
 
         System.out.println(array.getFirstIndexByValue(88));
 
-        array.set(6, 77);
+        array.set(6, 725);
+        array.print();
+        System.out.println();
 
-        array.delete(3);
+        array.add(5, 451);
+        array.print();
+        System.out.println();
 
-        array.add(5,451);
-
+        array.delete(7);
+        array.print();
+        System.out.println();
 
     }
 }
