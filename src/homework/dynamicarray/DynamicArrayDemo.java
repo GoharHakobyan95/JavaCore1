@@ -20,7 +20,7 @@ public class DynamicArrayDemo {
 
         System.out.println(array.isEmpty());
 
-        System.out.println(array.getByIndex(5));
+        System.out.println(array.getByIndex(8));
 
         System.out.println(array.getFirstIndexByValue(88));
 
