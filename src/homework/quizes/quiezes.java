@@ -9,6 +9,7 @@ public class quiezes {
                 if (j == 3 && k == 1) break foreach;
                 if (j == 0 || j == 2) break;
             }
+
         }
     }
 
