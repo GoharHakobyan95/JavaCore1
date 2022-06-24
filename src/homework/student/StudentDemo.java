@@ -81,9 +81,9 @@ public class StudentDemo {
     private static void changeLesson() {
         studentStorage.print();
         System.out.println("Please Choose Student index");
-        int index = Integer.parseInt(scanner.nextLine());
+        int studentIndex = Integer.parseInt(scanner.nextLine());
         System.out.println("Please Choose new lesson");
         String newLessonName = scanner.nextLine();
-        studentStorage.change(index, newLessonName);
+        studentStorage.change(studentIndex, newLessonName);
     }
 }
