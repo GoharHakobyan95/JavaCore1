@@ -50,11 +50,10 @@ public class StudentStorage {
     }
 
 
-    public void change(int index, String newLesson) {
-        if (index >= 0 && index < size) {
-            for (int i = index; i < size; i++) {
+    public void change(int studentIndex, String newLesson) {
+        if (studentIndex >= 0 && studentIndex < size) {
+            for (int i = studentIndex; i < size; i++) {
                 array[i].setLesson(newLesson);
-                newLesson.equals(array[i]);
             }
             System.out.println("Lesson name changed");
         } else {

@@ -34,6 +34,7 @@ public class StudentDemo {
                     break;
                 case 5:
                     studentsByLesson();
+                    break;
                 case 6:
                     changeLesson();
                     break;
