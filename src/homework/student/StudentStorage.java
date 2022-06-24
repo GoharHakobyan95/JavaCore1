@@ -52,9 +52,7 @@ public class StudentStorage {
 
     public void change(int studentIndex, String newLesson) {
         if (studentIndex >= 0 && studentIndex < size) {
-            for (int i = studentIndex; i < size; i++) {
-                array[i].setLesson(newLesson);
-            }
+                array[studentIndex].setLesson(newLesson);
             System.out.println("Lesson name changed");
         } else {
             System.out.println("Index out of bound");
