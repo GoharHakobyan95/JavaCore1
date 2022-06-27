@@ -1,0 +1,86 @@
+package homework.books;
+
+import java.util.Scanner;
+
+public class BookDemo implements Commands {
+    private static Scanner scanner = new Scanner(System.in);
+    private static BookStorage bookStorage = new BookStorage();
+
+    public static void main(String[] args) {
+        boolean run = true;
+        while (run) {
+            System.out.println("Please input " + Commands.EXIT + " for exit");
+            System.out.println("Please input " + Commands.ADD_BOOK + " for add book");
+            System.out.println("Please input " + Commands.PRINT_ALL_BOOKS + " for print all books");
+            System.out.println("Please input " + Commands.PRINT_BOOKS_BY_AUTHOR_NAME + " for print books by author name ");
+            System.out.println("Please input " + Commands.PRINT_BOOKS_BY_GENRE + " for  print books by genre ");
+            System.out.println("Please input " + Commands.PRINT_BOOKS_BY_PRICE_RANGE + " for  print books by price range ");
+
+            int command = Integer.parseInt(scanner.nextLine());
+            switch (command) {
+                case Commands.EXIT:
+                    run = false;
+                    break;
+                case Commands.ADD_BOOK:
+                    addBook();
+                    break;
+                case Commands.PRINT_ALL_BOOKS:
+                    bookStorage.print();
+                    break;
+                case Commands.PRINT_BOOKS_BY_AUTHOR_NAME:
+                    printBooksByAuthorName();
+                    break;
+                case Commands.PRINT_BOOKS_BY_GENRE:
+                    printBooksByGenre();
+                    break;
+                case Commands.PRINT_BOOKS_BY_PRICE_RANGE:
+                    printBooksByPriceRange();
+                    break;
+                default:
+                    System.out.println("Invalid command, please try again.");
+                    break;
+            }
+        }
+    }
+
+    private static void addBook() {
+        System.out.println("Please input Title of Book");
+        String title = scanner.nextLine();
+        System.out.println("Please input Author name of Book");
+        String authorName = scanner.nextLine();
+        System.out.println("Please input Price of Book");
+        String priceStr = scanner.nextLine();
+        System.out.println("Please input Count of Books");
+        String countStr = scanner.nextLine();
+        System.out.println("Please input Genre of Book");
+        String genre = scanner.nextLine();
+
+        double price = Double.parseDouble(priceStr);
+        int count = Integer.parseInt(countStr);
+        Book book = new Book(title, authorName, price, count, genre);
+        bookStorage.add(book);
+        System.out.println("Thank you, book was added");
+    }
+
+    private static void printBooksByAuthorName() {
+        System.out.println("Please input Author name of Book");
+        String authorName = scanner.nextLine();
+        bookStorage.booksByAuthorName(authorName);
+    }
+
+    private static void printBooksByGenre() {
+        System.out.println("Please input the Genre of Book");
+        String genre = scanner.nextLine();
+        bookStorage.booksByGenre(genre);
+    }
+
+    private static void printBooksByPriceRange() {
+        System.out.println(" Please input price range for Books  ");
+        String range = scanner.nextLine();
+        String[] split = range.split(",");
+        double min = Double.parseDouble(split[0]);
+        double max = Double.parseDouble(split[1]);
+        bookStorage.booksByPriceRange(min, max);
+    }
+
+}

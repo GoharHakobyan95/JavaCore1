@@ -50,18 +50,14 @@ public class StudentStorage {
     }
 
 
-    public void change(int studentIndex, String newLesson) {
-        if (studentIndex >= 0 && studentIndex < size) {
-                array[studentIndex].setLesson(newLesson);
-            System.out.println("Lesson name changed");
-        } else {
-            System.out.println("Index out of bound");
+    public Student getStudentByIndex(int index) {
+        if (index >= 0 && index < size) {
+            return array[index];
         }
+        return null;
     }
 
 }
-
-
 
 
 

@@ -32,13 +32,15 @@ public class DynamicArray {
 
 
     public int getByIndex(int index) {
-        int value = 0;
-        return (index > 0 && index <= size) ? array[index] : 0;
+        if (index >= 0 && index < size) {
+            return (array[index]);
+        }
+        return 0;
     }
 
     public int getFirstIndexByValue(int value) {
         for (int i = 0; i < size; i++) {
-            if (value == array[i]) {
+            if (array[i] == value) {
                 return i;
             }
         }
@@ -47,45 +49,35 @@ public class DynamicArray {
 
 
     public void set(int index, int value) {
-        int temp = 0;
-        for (int i = 0; i < size; i++) {
-            temp += array[index];
+        if (index >= 0 && index < size) {
             array[index] = value;
+        } else {
+            System.out.println("invalid index");
         }
     }
-
 
     public void add(int index, int value) {
-        for (int i = 0; i < size; i++) {
-            if (array[i] == array[index]) {
-                for (int j = size; j >= index; j--) {
-                    array[j + 1] = array[j];
-                }
-                if (array[i] == array[index]) {
-                    array[index] = value;
-                }
-                size++;
-            }
+        if (size == array.length) {
+            extend();
         }
+        for (int i = size; i >= index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = value;
+        size++;
     }
-
 
     public void delete(int index) {
-        int value = 0;
-        for (int j = 0; j < size; j++) {
-            value = array[index];
-        }
-        for (int i = 0; i < size; i++) {
-            if (array[i] == array[index]) {
-                for (int j = i; j < size; j++) {
-                    array[j] = array[j + 1];
-                }
-                size--;
+        if (index >= 0 && index < size) {
+            for (int j = index; j <= size; j++) {
+                array[j] = array[j + 1];
             }
-
+            size--;
         }
     }
+
 }
+
 
 
 
