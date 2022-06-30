@@ -1,4 +1,6 @@
-package homework.books;
+package homework.books.storage;
+
+import homework.books.model.Book;
 
 public class BookStorage {
     private Book[] array = new Book[10];
@@ -22,15 +24,6 @@ public class BookStorage {
     public void print() {
         for (int i = 0; i < size; i++) {
             System.out.println(i + "." + array[i] + " ");
-        }
-    }
-
-
-    public void booksByAuthorName(String authorName) {
-        for (int i = 0; i < size; i++) {
-            if (array[i].getAuthorName().equals(authorName)) {
-                System.out.println(array[i]);
-            }
         }
     }
 

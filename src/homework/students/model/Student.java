@@ -1,4 +1,4 @@
-package homework.student;
+package homework.students.model;
 
 public class Student {
 
@@ -7,7 +7,7 @@ public class Student {
     private int  age;
     private String phoneNumber;
     private String city;
-    private  String lesson;
+    private  Lesson lesson;
 
     @Override
     public String toString() {
@@ -21,7 +21,7 @@ public class Student {
                 '}';
     }
 
-    public Student(String name, String surname, int age, String phoneNumber, String city, String lesson) {
+    public Student(String name, String surname, int age, String phoneNumber, String city, Lesson lesson) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -72,11 +72,11 @@ public class Student {
     public void setCity(String city) {
         this.city = city;
     }
-        public String getLesson() {
+        public Lesson getLesson() {
             return lesson;
         }
 
-        public void setLesson(String lesson) {
+        public void setLesson(Lesson lesson) {
             this.lesson = lesson;
     }
 }
