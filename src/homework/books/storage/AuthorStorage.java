@@ -1,5 +1,6 @@
 package homework.books.storage;
 
+import homework.books.exception.AuthorNotFoundException;
 import homework.books.model.Author;
 
 public class AuthorStorage {
@@ -36,16 +37,22 @@ public class AuthorStorage {
         for (int i = 0; i < size; i++) {
             if (array[i].getName().equals(author)) {
                 System.out.println(array[i]);
+            } else {
+                System.out.println("Please input correct name");
             }
         }
     }
 
 
-    public Author getAuthorByIndex(int authorIndex) {
-        if (authorIndex >= 0 && authorIndex < size) {
+    public Author getAuthorByIndex(int authorIndex) throws AuthorNotFoundException {
+        if (authorIndex < 0 || authorIndex > size) {
+            throw new AuthorNotFoundException();
+        } else {
+            if (array[authorIndex] == null) {
+                throw new AuthorNotFoundException();
+            }
             return array[authorIndex];
         }
-        return null;
     }
 }
 
