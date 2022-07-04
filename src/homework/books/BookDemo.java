@@ -72,7 +72,7 @@ public class BookDemo implements Commands {
 
         while (!isValid(gender)) {
             System.out.println("Please input correct gender: Male or Female. ");
-            gender =scanner.nextLine();
+            gender = scanner.nextLine();
             author.setGender(gender);
         }
         authorStorage.add(author);

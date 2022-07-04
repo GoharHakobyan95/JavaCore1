@@ -22,6 +22,9 @@ public class BookStorage {
     }
 
     public void print() {
+        if (size == 0) {
+            System.out.println("There are no books ! ");
+        }
         for (int i = 0; i < size; i++) {
             System.out.println(i + "." + array[i] + " ");
         }
