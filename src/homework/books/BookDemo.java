@@ -31,6 +31,9 @@ public class BookDemo implements Commands {
                 case ADD_BOOK:
                     addBook();
                     break;
+                case ADD_BOOK_BY_AUTHORS_INDEX:
+                    addBookByAuthorsIndex();
+                    break;
                 case ADD_AUTHOR:
                     addAuthor();
                     break;
@@ -84,7 +87,35 @@ public class BookDemo implements Commands {
         return gender.equals("Male") || gender.equals("Female");
     }
 
-    private static void addBook() throws AuthorNotFoundException {
+
+    private static void addBook() {
+        Author author = new Author();
+        try {
+            System.out.println("Please input Title of Book. ");
+            String title = scanner.nextLine();
+            System.out.println("Please input Price of Book. ");
+            String priceStr = scanner.nextLine();
+            System.out.println("Please input Count of Books. ");
+            String countStr = scanner.nextLine();
+            System.out.println("Please input Genre of Book. ");
+            String genre = scanner.nextLine();
+            double price = Double.parseDouble(priceStr);
+            int count = Integer.parseInt(countStr);
+
+            Book book = new Book(title, author, price, count, genre);
+            bookStorage.add(book);
+            System.out.println("Thank you, book was added !!! ");
+        } catch (AuthorNotFoundException e) {
+            System.out.println("Author not found do it again ! ");
+            addBook();
+        } catch (NumberFormatException e) {
+            System.out.println("Please input valid number ! ");
+
+        }
+    }
+
+
+    private static void addBookByAuthorsIndex() throws AuthorNotFoundException {
         if (authorStorage.getSize() == 0) {
             System.out.println("Please add Author. ");
             addAuthor();
@@ -109,13 +140,13 @@ public class BookDemo implements Commands {
                 System.out.println("Thank you, book was added !!! ");
             } catch (AuthorNotFoundException e) {
                 System.out.println("Author not found do it again ! ");
-                addBook();
+                addBookByAuthorsIndex();
             } catch (NumberFormatException e) {
                 System.out.println("Please input valid number ! ");
-
             }
         }
     }
+
 
     private static Author getAuthorByIndex() {
         System.out.println("Please input author's index");
@@ -123,11 +154,13 @@ public class BookDemo implements Commands {
         return authorStorage.getAuthorByIndex(index);
     }
 
+
     private static void printBooksByAuthorName() {
         System.out.println("Please input Author name of Book! ");
         String authorName = scanner.nextLine();
         authorStorage.booksByAuthorName(authorName);
     }
+
 
     private static void printBooksByGenre() {
         System.out.println("Please input the Genre of Book! ");
