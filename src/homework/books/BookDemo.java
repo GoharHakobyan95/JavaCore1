@@ -90,6 +90,7 @@ public class BookDemo implements Commands {
 
     private static void addBook() {
         Author author = new Author();
+        addAuthor();
         try {
             System.out.println("Please input Title of Book. ");
             String title = scanner.nextLine();
