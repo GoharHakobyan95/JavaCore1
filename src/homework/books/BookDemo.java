@@ -27,7 +27,7 @@ public class BookDemo implements Commands {
             String login = scanner.nextLine();
             System.out.println(" Password  ");
             String password = scanner.nextLine();
-            if (!login.equals("admin") && !password.equals("123456")) {
+            if (!login.equals("admin") || !password.equals("123456")) {
                 System.out.println(" Incorrect login and/or password ");
             } else {
                 Commands.printCommands();
