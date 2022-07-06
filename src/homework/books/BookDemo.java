@@ -15,55 +15,59 @@ public class BookDemo implements Commands {
     private static Scanner scanner = new Scanner(System.in);
     private static BookStorage bookStorage = new BookStorage();
     private static AuthorStorage authorStorage = new AuthorStorage();
-
     private static String login;
     private static String password;
 
     public static void main(String[] args) throws AuthorNotFoundException {
+        logIn();
+        boolean run = true;
+        while (run) {
+            int command;
+            try {
+                command = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                command = -1;
+            }
+            switch (command) {
+                case EXIT:
+                    run = false;
+                    break;
+                case ADD_BOOK:
+                    addBook();
+                    break;
+                case ADD_AUTHOR:
+                    addAuthor();
+                    break;
+                case PRINT_ALL_BOOKS:
+                    bookStorage.print();
+                    break;
+                case PRINT_BOOKS_BY_AUTHOR_NAME:
+                    printBooksByAuthorName();
+                    break;
+                case PRINT_BOOKS_BY_GENRE:
+                    printBooksByGenre();
+                    break;
+                case PRINT_BOOKS_BY_PRICE_RANGE:
+                    printBooksByPriceRange();
+                    break;
+                default:
+                    System.out.println("Invalid command, please try again. ");
+                    break;
+            }
+        }
+    }
+
+
+    private static void logIn() {
         System.out.println(" Log in  ");
         String login = scanner.nextLine();
         System.out.println(" Password  ");
         String password = scanner.nextLine();
         if (!login.equals("admin") || !password.equals("123456")) {
             System.out.println(" Incorrect login and/or password ");
+            logIn();
         } else {
-
-            boolean run = true;
-            while (run) {
-                Commands.printCommands();
-                int command;
-                try {
-                    command = Integer.parseInt(scanner.nextLine());
-                } catch (NumberFormatException e) {
-                    command = -1;
-                }
-                switch (command) {
-                    case EXIT:
-                        run = false;
-                        break;
-                    case ADD_BOOK:
-                        addBook();
-                        break;
-                    case ADD_AUTHOR:
-                        addAuthor();
-                        break;
-                    case PRINT_ALL_BOOKS:
-                        bookStorage.print();
-                        break;
-                    case PRINT_BOOKS_BY_AUTHOR_NAME:
-                        printBooksByAuthorName();
-                        break;
-                    case PRINT_BOOKS_BY_GENRE:
-                        printBooksByGenre();
-                        break;
-                    case PRINT_BOOKS_BY_PRICE_RANGE:
-                        printBooksByPriceRange();
-                        break;
-                    default:
-                        System.out.println("Invalid command, please try again. ");
-                        break;
-                }
-            }
+            Commands.printCommands();
         }
     }
 
