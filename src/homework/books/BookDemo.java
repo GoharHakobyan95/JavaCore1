@@ -23,6 +23,7 @@ public class BookDemo implements Commands {
         boolean run = true;
         while (run) {
             int command;
+            Commands.printCommands();
             try {
                 command = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
@@ -66,8 +67,6 @@ public class BookDemo implements Commands {
         if (!login.equals("admin") || !password.equals("123456")) {
             System.out.println(" Incorrect login and/or password ");
             logIn();
-        } else {
-            Commands.printCommands();
         }
     }
 
@@ -85,13 +84,17 @@ public class BookDemo implements Commands {
         try {
             Gender gender = Gender.valueOf(scanner.nextLine().toUpperCase());
             Author author = new Author(name, surname, email, gender);
+
             while (!isValid(gender)) {
+                gender = Gender.valueOf(scanner.nextLine().toUpperCase());
                 author.setGender(gender);
             }
             authorStorage.add(author);
             System.out.println("Thank you, Author was added !!! ");
+
         } catch (IllegalArgumentException e) {
             System.out.println("Please input correct gender: Male or Female. ");
+            addAuthor();
         }
     }
 
