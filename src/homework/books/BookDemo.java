@@ -1,6 +1,5 @@
 package homework.books;
 
-import chapters.chapter9.A;
 import homework.books.command.Commands;
 import homework.books.exception.AuthorNotFoundException;
 import homework.books.model.Author;
@@ -79,26 +78,23 @@ public class BookDemo implements Commands {
         String email = scanner.nextLine();
 
         System.out.println("Please input Author gender. ");
-        try {
-            Gender gender = Gender.valueOf(scanner.nextLine().toUpperCase());
-
-            validateGender(gender);
-
-            Author author = new Author(name, surname, email, gender);
-            author.setGender(gender);
-            authorStorage.add(author);
-            System.out.println("Thank you, Author was added !!! ");
-        } catch (
-                IllegalArgumentException e) {
-            System.out.println("Please input correct gender: Male or Female. ");
-            addAuthor();
-        }
+        Gender gender = gender();
+        
+        Author author = new Author(name, surname, email, gender);
+        author.setGender(gender);
+        authorStorage.add(author);
+        System.out.println("Thank you, Author was added !!! ");
     }
 
-    private static void validateGender(Gender gender) {
-        if (gender.equals(Gender.FEMALE) || gender.equals(Gender.MALE)) {
-            return;
+    private static Gender gender() {
+        Gender gender;
+        try {
+            gender = Gender.valueOf(scanner.nextLine().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid gender input");
+            gender = gender();
         }
+        return gender;
     }
 
 
