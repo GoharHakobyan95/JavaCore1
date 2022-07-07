@@ -15,8 +15,6 @@ public class BookDemo implements Commands {
     private static Scanner scanner = new Scanner(System.in);
     private static BookStorage bookStorage = new BookStorage();
     private static AuthorStorage authorStorage = new AuthorStorage();
-    private static String login;
-    private static String password;
 
     public static void main(String[] args) throws AuthorNotFoundException {
         logIn();
@@ -67,8 +65,6 @@ public class BookDemo implements Commands {
         if (!login.equals("admin") || !password.equals("123456")) {
             System.out.println(" Incorrect login and/or password ");
             logIn();
-        } else {
-
         }
     }
 
@@ -85,8 +81,10 @@ public class BookDemo implements Commands {
         System.out.println("Please input Author gender. ");
         try {
             Gender gender = Gender.valueOf(scanner.nextLine().toUpperCase());
+
+            validateGender(gender);
+
             Author author = new Author(name, surname, email, gender);
-            isValid(gender);
             author.setGender(gender);
             authorStorage.add(author);
             System.out.println("Thank you, Author was added !!! ");
@@ -97,8 +95,10 @@ public class BookDemo implements Commands {
         }
     }
 
-    private static boolean isValid(Gender gender) {
-        return gender.equals(Gender.FEMALE) || gender.equals(Gender.MALE);
+    private static void validateGender(Gender gender) {
+        if (gender.equals(Gender.FEMALE) || gender.equals(Gender.MALE)) {
+            return;
+        }
     }
 
 
