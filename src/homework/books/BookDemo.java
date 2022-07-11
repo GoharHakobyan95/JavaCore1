@@ -202,12 +202,6 @@ public class BookDemo implements Commands {
         return gender;
     }
 
-    private static void deleteAuthor() {
-        authorStorage.print();
-        System.out.println("Please choose author index");
-        int index = Integer.parseInt(scanner.nextLine());
-        authorStorage.delete(index);
-    }
 
     private static void addBook() throws AuthorNotFoundException {
         if (authorStorage.getSize() == 0) {
@@ -244,6 +238,12 @@ public class BookDemo implements Commands {
         }
     }
 
+    private static void deleteAuthor() {
+        authorStorage.print();
+        System.out.println("Please choose author index");
+        int index = Integer.parseInt(scanner.nextLine());
+        authorStorage.delete(index);
+    }
 
     private static void printBooksByAuthorName() {
         System.out.println("Please input Author name of Book! ");
