@@ -1,6 +1,6 @@
 package homework.quizes;
 
-public class quiezes {
+public class Quieze {
     public static void main(String[] args) {
         foreach:
         for (int j = 0; j < 5; j++) {

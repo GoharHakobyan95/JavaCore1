@@ -1,12 +1,12 @@
 package homework.students.storage;
 
-import homework.students.model.Student;
+import homework.students.model.User;
 
-public class StudentStorage {
-    private Student[] array = new Student[10];
+public class UserStorage {
+    private User[] array = new User[10];
     private int size = 0;
 
-    public void add(Student student) {
+    public void add(User student) {
         if (size == array.length) {
             extend();
         }
@@ -14,8 +14,8 @@ public class StudentStorage {
     }
 
     private void extend() {
-        Student[] temp = new Student[array.length + 10];
-       System.arraycopy(array, 0, temp, 0, size);
+        User[] temp = new User[array.length + 10];
+        System.arraycopy(array, 0, temp, 0, size);
         array = temp;
     }
 
@@ -35,27 +35,21 @@ public class StudentStorage {
                 array[index] = array[index + 1];
             }
             size--;
-            System.out.println("Student deleted");
+            System.out.println("User deleted");
         } else {
             System.out.println("Index out of bound");
         }
     }
 
-    public void printStudentsByLesson(String lessonName) {
+    public User getUserByEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if (array[i].getLesson().equals(lessonName)) {
-                System.out.println(array[i]);
+            if (array[i].getEmail().equals(email)) {
+                return array[i];
             }
-        }
-    }
-
-
-    public Student getStudentByIndex(int index) {
-        if (index >= 0 && index < size) {
-            return array[index];
         }
         return null;
     }
+
 
 }
 

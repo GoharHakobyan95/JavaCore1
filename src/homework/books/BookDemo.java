@@ -2,11 +2,11 @@ package homework.books;
 
 import homework.books.command.Commands;
 import homework.books.exception.AuthorNotFoundException;
-import homework.books.model.Author;
-import homework.books.model.Book;
-import homework.books.model.Gender;
+import homework.books.model.*;
 import homework.books.storage.AuthorStorage;
 import homework.books.storage.BookStorage;
+import homework.books.storage.UserStorage;
+
 
 import java.util.Scanner;
 
@@ -14,13 +14,18 @@ public class BookDemo implements Commands {
     private static Scanner scanner = new Scanner(System.in);
     private static BookStorage bookStorage = new BookStorage();
     private static AuthorStorage authorStorage = new AuthorStorage();
+    private static UserStorage userStorage = new UserStorage();
+
+    private static User currentUser = null;
 
     public static void main(String[] args) throws AuthorNotFoundException {
-        logIn();
+        User admin = new User("admin", "admin", "admin@mail.ru", "123456", Role.ADMIN);
+        userStorage.add(admin);
+
         boolean run = true;
         while (run) {
+            Commands.printLoginCommands();
             int command;
-            Commands.printCommands();
             try {
                 command = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
@@ -28,6 +33,79 @@ public class BookDemo implements Commands {
             }
             switch (command) {
                 case EXIT:
+                    run = false;
+                    break;
+                case SIGN_IN:
+                    logIn();
+                    break;
+                case SIGN_UP:
+                    register();
+                    break;
+                default:
+                    System.out.println("Invalid command, please try again.");
+                    break;
+            }
+        }
+    }
+
+
+    private static void logIn() throws AuthorNotFoundException {
+        System.out.println("Please input email, password");
+        String emailPasswordStr = scanner.nextLine();
+        String[] emailPassword = emailPasswordStr.split(",");
+        User user = userStorage.getUserByEmail(emailPassword[0]);
+        if (user == null) {
+            System.out.println("User does not exists!");
+        } else {
+            if (!user.getPassword().equals(emailPassword[1])) {
+                System.out.println("Password is wrong!");
+            } else {
+                currentUser = user;
+                if (user.getRole() == Role.ADMIN) {
+                    adminLogin();
+                } else if (user.getRole() == Role.USER) {
+                    userLogin();
+                }
+            }
+        }
+    }
+
+    private static void register() {
+        System.out.println("Please input name, surname, email, password");
+        String userDataStr = scanner.nextLine();
+        String[] userData = userDataStr.split(",");
+        if (userData.length < 4) {
+            System.out.println("Please input correct data for user");
+        } else {
+            if (userStorage.getUserByEmail(userData[2]) == null) {
+                User user = new User();
+                user.setName(userData[0]);
+                user.setSurname(userData[1]);
+                user.setEmail(userData[2]);
+                user.setPassword(userData[3]);
+                user.setRole(Role.USER);
+                userStorage.add(user);
+                System.out.println("User registered!");
+            } else {
+                System.out.println("User with " + userData[2] + "already exists. ");
+            }
+        }
+    }
+
+
+    private static void adminLogin() throws AuthorNotFoundException {
+        boolean run = true;
+        while (run) {
+            int command;
+            Commands.printAdminCommands();
+            try {
+                command = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                command = -1;
+            }
+            switch (command) {
+                case LOGOUT:
+                    currentUser = null;
                     run = false;
                     break;
                 case ADD_BOOK:
@@ -56,14 +134,38 @@ public class BookDemo implements Commands {
     }
 
 
-    private static void logIn() {
-        System.out.println(" Log in  ");
-        String login = scanner.nextLine();
-        System.out.println(" Password  ");
-        String password = scanner.nextLine();
-        if (!login.equals("admin") || !password.equals("123456")) {
-            System.out.println(" Incorrect login and/or password ");
-            logIn();
+    private static void userLogin() throws AuthorNotFoundException {
+        System.out.println("Welcome, " + currentUser.getName());
+        boolean run = true;
+        while (run) {
+            int command;
+            Commands.printUserCommands();
+            try {
+                command = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                command = -1;
+            }
+            switch (command) {
+                case LOGOUT:
+                    currentUser = null;
+                    run = false;
+                    break;
+                case PRINT_ALL_BOOKS:
+                    bookStorage.print();
+                    break;
+                case PRINT_BOOKS_BY_AUTHOR_NAME:
+                    printBooksByAuthorName();
+                    break;
+                case PRINT_BOOKS_BY_GENRE:
+                    printBooksByGenre();
+                    break;
+                case PRINT_BOOKS_BY_PRICE_RANGE:
+                    printBooksByPriceRange();
+                    break;
+                default:
+                    System.out.println("Invalid command, please try again. ");
+                    break;
+            }
         }
     }
 
@@ -79,8 +181,8 @@ public class BookDemo implements Commands {
 
         System.out.println("Please input Author gender. ");
         Gender gender = gender();
-        
-        Author author = new Author(name, surname, email, gender);
+
+        Author author = new Author(name, surname, email, gender,currentUser);
         author.setGender(gender);
         authorStorage.add(author);
         System.out.println("Thank you, Author was added !!! ");
