@@ -41,6 +41,17 @@ public class AuthorStorage {
         }
     }
 
+    public void delete(int index) {
+        if (index >= 0 && index < size) {
+            for (int i = index; i < size; i++) {
+                array[index] = array[index + 1];
+            }
+            size--;
+            System.out.println("Author deleted");
+        } else {
+            System.out.println("Index out of bound");
+        }
+    }
 
     public Author getAuthorByIndex(int authorIndex) throws AuthorNotFoundException {
         if (authorIndex < 0 || authorIndex > size) {

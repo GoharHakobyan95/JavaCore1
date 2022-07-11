@@ -126,6 +126,9 @@ public class BookDemo implements Commands {
                 case PRINT_BOOKS_BY_PRICE_RANGE:
                     printBooksByPriceRange();
                     break;
+                case DELETE_AUTHOR_BY_INDEX:
+                    deleteAuthor();
+                    break;
                 default:
                     System.out.println("Invalid command, please try again. ");
                     break;
@@ -182,7 +185,7 @@ public class BookDemo implements Commands {
         System.out.println("Please input Author gender. ");
         Gender gender = gender();
 
-        Author author = new Author(name, surname, email, gender,currentUser);
+        Author author = new Author(name, surname, email, gender, currentUser);
         author.setGender(gender);
         authorStorage.add(author);
         System.out.println("Thank you, Author was added !!! ");
@@ -199,6 +202,12 @@ public class BookDemo implements Commands {
         return gender;
     }
 
+    private static void deleteAuthor() {
+        authorStorage.print();
+        System.out.println("Please choose author index");
+        int index = Integer.parseInt(scanner.nextLine());
+        authorStorage.delete(index);
+    }
 
     private static void addBook() throws AuthorNotFoundException {
         if (authorStorage.getSize() == 0) {
@@ -233,12 +242,6 @@ public class BookDemo implements Commands {
                 System.out.println("Please input valid number or index. ");
             }
         }
-    }
-
-    private static Author getAuthorByIndex() throws AuthorNotFoundException {
-        System.out.println("Please input author's index");
-        int index = Integer.parseInt(scanner.nextLine());
-        return authorStorage.getAuthorByIndex(index);
     }
 
 

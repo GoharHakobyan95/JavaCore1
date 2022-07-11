@@ -8,6 +8,7 @@ public interface Commands {
     int PRINT_BOOKS_BY_AUTHOR_NAME = 4;
     int PRINT_BOOKS_BY_GENRE = 5;
     int PRINT_BOOKS_BY_PRICE_RANGE = 6;
+    int DELETE_AUTHOR_BY_INDEX = 7;
 
 
     int EXIT = 0;
@@ -28,6 +29,7 @@ public interface Commands {
         System.out.println("Please input " + Commands.PRINT_BOOKS_BY_AUTHOR_NAME + " for print books by author name ");
         System.out.println("Please input " + Commands.PRINT_BOOKS_BY_GENRE + " for print books by genre ");
         System.out.println("Please input " + Commands.PRINT_BOOKS_BY_PRICE_RANGE + " for print books by price range ");
+        System.out.println("Please input " + Commands.DELETE_AUTHOR_BY_INDEX + " for delete author ");
     }
 
     static void printUserCommands() {
