@@ -1,0 +1,2 @@
+Hello from java
+Hello from java line2
