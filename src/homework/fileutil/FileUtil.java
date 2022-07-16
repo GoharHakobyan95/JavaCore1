@@ -9,11 +9,11 @@ public class FileUtil {
 
     public static void main(String[] args) throws IOException {
 
-//        fileSearch();
-//        contentSearch();
+        fileSearch();
+        contentSearch();
         findLines();
-//        createFileWithContent();
-//        printSizeOfPackage();
+        createFileWithContent();
+        printSizeOfPackage();
 
     }
     //այս մեթոդը պետք է սքաններով վերցնի երկու string.
