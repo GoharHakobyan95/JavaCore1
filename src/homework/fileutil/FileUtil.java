@@ -12,8 +12,9 @@ public class FileUtil {
         fileSearch();
         contentSearch();
         findLines();
-        createFileWithContent();
         printSizeOfPackage();
+        createFileWithContent();
+
 
     }
     //այս մեթոդը պետք է սքաններով վերցնի երկու string.
