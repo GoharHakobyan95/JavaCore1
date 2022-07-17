@@ -31,16 +31,10 @@ public class FileUtil {
         } else {
             System.out.println("Please input file name.");
             String fileName = scanner.nextLine();
-            File myFile = new File(pathStr);
-            for (File file : myFile.listFiles())
-                if (file.isFile() && file.getName().contains(fileName)) {
-                    System.out.println(myFile.exists());
-                } else {
-                    System.out.println("File does not found!");
-                    break;
-                }
+            File myFile = new File(pathStr , fileName);
+            System.out.println(myFile.exists());
+            }
         }
-    }
 
 
     //այս մեթոդը պետք է սքաններով վերցնի երկու string.
