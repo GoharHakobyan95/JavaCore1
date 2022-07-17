@@ -25,16 +25,11 @@ public class FileUtil {
     static void fileSearch() throws IOException {
         System.out.println("Please input path.");
         String pathStr = scanner.nextLine();
-        File path = new File(pathStr);
-        if (!path.exists() || path.isFile()) {
-            System.out.println("Directory path does not exists.");
-        } else {
-            System.out.println("Please input file name.");
-            String fileName = scanner.nextLine();
-            File myFile = new File(pathStr , fileName);
-            System.out.println(myFile.exists());
-            }
-        }
+        System.out.println("Please input file name.");
+        String fileName = scanner.nextLine();
+        File myFile = new File(pathStr, fileName);
+        System.out.println(myFile.exists());
+    }
 
 
     //այս մեթոդը պետք է սքաններով վերցնի երկու string.
