@@ -41,6 +41,7 @@ public class FileUtil {
         }
     }
 
+
     //այս մեթոդը պետք է սքաններով վերցնի երկու string.
     // 1 - path թե որ ֆոլդերում ենք փնտրելու
     // 2 - keyword - ինչ որ բառ
@@ -59,8 +60,7 @@ public class FileUtil {
             File[] files = file.listFiles();
             for (File myFile : files) {
                 if (myFile.isFile() && myFile.getName().endsWith(".txt")) {
-                    try {
-                        BufferedReader bufferedReader = new BufferedReader(new FileReader(myFile));
+                    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(myFile))) {
                         String check;
                         while ((check = bufferedReader.readLine()) != null) {
                             if (check.contains(keyword)) {
@@ -94,8 +94,7 @@ public class FileUtil {
             File[] files = file.listFiles();
             for (File myFile : files) {
                 if (myFile.isFile() && myFile.getName().endsWith(".txt")) {
-                    try {
-                        BufferedReader bufferedReader = new BufferedReader(new FileReader(myFile));
+                    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(myFile))) {
                         String line = "";
                         int lineNumber = 1;
                         while ((line = bufferedReader.readLine()) != null) {
